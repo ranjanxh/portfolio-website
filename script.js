@@ -6,37 +6,43 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Smooth scrolling for navigation links
-    document.querySelectorAll('nav a').forEach(anchor => {
+    document.querySelectorAll('.nav-link').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
 
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
-
-            // Optional: Add 'active' class to current nav item
-            document.querySelectorAll('nav a').forEach(link => link.classList.remove('active'));
-            this.classList.add('active');
+            const targetId = this.getAttribute('href');
+            if (targetId && targetId.startsWith('#')) {
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            }
         });
     });
 
-    // Optional: Highlight nav link based on scroll position (more advanced)
-    const sections = document.querySelectorAll('section[id]');
+    // Optional: Add a class to the header on scroll for a sticky/shrink effect (like the example)
+    const header = document.querySelector('.header');
+    const heroSection = document.querySelector('.hero-section');
+    const headerHeight = header.offsetHeight; // Get initial header height
+
     window.addEventListener('scroll', () => {
-        let current = '';
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (pageYOffset >= sectionTop - 100 && pageYOffset < sectionTop + sectionHeight - 100) {
-                current = section.getAttribute('id');
-            }
-        });
-
-        document.querySelectorAll('nav a').forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href').includes(current)) {
-                link.classList.add('active');
-            }
-        });
+        if (window.scrollY > heroSection.offsetHeight - headerHeight) { // Adjust threshold as needed
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
     });
+
+    // You would need to add CSS for .header.scrolled to make it appear/shrink/change background
+    // Example CSS for .header.scrolled (add to your style.css):
+    /*
+    .header.scrolled {
+        position: fixed;
+        background-color: var(--bg-dark); // Or a slightly transparent version
+        box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        padding: 15px 0; // Make it slightly smaller
+    }
+    */
 });
