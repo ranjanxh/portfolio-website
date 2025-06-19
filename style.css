@@ -1,0 +1,319 @@
+/* Basic Reset & General Styles */
+:root {
+    --primary-color: #004F90; /* Your resume's blue */
+    --accent-color: #FFD700; /* A complementary accent for highlights */
+    --text-color: #333;
+    --light-gray: #f4f4f4;
+    --dark-gray: #555;
+    --white: #fff;
+    --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --border-radius: 8px;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--light-gray);
+    scroll-behavior: smooth; /* Smooth scrolling for nav links */
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1, h2, h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+h2 {
+    font-size: 2.2em;
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: var(--accent-color);
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--accent-color);
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-top: 15px;
+    margin-right: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+    background-color: #003a6a; /* Darker shade of primary */
+    transform: translateY(-2px);
+    color: var(--white); /* Ensure text stays white on hover */
+}
+
+/* Header/Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, var(--primary-color), #006ebc); /* Gradient background */
+    color: var(--white);
+    padding: 60px 0;
+    text-align: center;
+    box-shadow: var(--card-shadow);
+}
+
+.hero-section .profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid var(--accent-color);
+    margin-bottom: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.hero-section h1 {
+    color: var(--white);
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+
+.hero-section .tagline {
+    font-size: 1.2em;
+    opacity: 0.9;
+    margin-bottom: 30px;
+}
+
+.social-links a {
+    color: var(--white);
+    margin: 0 15px;
+    font-size: 1.1em;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.social-links a:hover {
+    color: var(--accent-color);
+    transform: scale(1.1);
+}
+
+/* Navigation Bar */
+.navbar {
+    background-color: var(--dark-gray);
+    padding: 10px 0;
+    position: sticky; /* Sticky nav */
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--card-shadow);
+}
+
+.navbar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.navbar ul li {
+    margin: 0 15px;
+}
+
+.navbar ul li a {
+    color: var(--white);
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.navbar ul li a:hover,
+.navbar ul li a.active {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: var(--accent-color); /* Highlight active/hovered link */
+}
+
+/* Section Styling */
+.section {
+    padding: 60px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.section:last-of-type {
+    border-bottom: none;
+}
+
+.card {
+    background-color: var(--white);
+    padding: 30px;
+    margin-bottom: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Subtle hover effect */
+}
+
+.card h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-size: 1.4em;
+}
+
+.card p {
+    margin-bottom: 8px;
+}
+
+.card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.card ul li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 8px;
+}
+
+.card ul li::before {
+    content: "\f00c"; /* Font Awesome checkmark */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    color: var(--accent-color);
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.card .date {
+    font-style: italic;
+    color: var(--dark-gray);
+    font-size: 0.9em;
+    float: right; /* Align date to the right */
+}
+
+/* Projects Section specific */
+.project-card .btn {
+    margin-right: 10px;
+}
+
+/* Skills Grid */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.skill-category {
+    background-color: var(--white);
+    padding: 25px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    text-align: center;
+}
+
+.skill-category h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+.skill-category p {
+    font-size: 0.95em;
+    line-height: 1.8;
+}
+
+/* Certifications List */
+.certification-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.certification-list li {
+    background-color: var(--white);
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    border-left: 5px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    font-size: 1.1em;
+}
+
+/* Footer */
+footer {
+    background-color: var(--dark-gray);
+    color: var(--white);
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.9em;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 2.5em;
+    }
+    .hero-section .tagline {
+        font-size: 1em;
+    }
+    .navbar ul {
+        flex-direction: column;
+    }
+    .navbar ul li {
+        margin: 5px 0;
+    }
+    .social-links a {
+        display: block;
+        margin: 10px 0;
+    }
+    .skills-grid {
+        grid-template-columns: 1fr; /* Stack skills on small screens */
+    }
+    .card .date {
+        float: none; /* Remove float on small screens */
+        display: block;
+        text-align: left;
+        margin-top: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    h2 {
+        font-size: 1.8em;
+    }
+    .hero-section {
+        padding: 40px 0;
+    }
+    .hero-section h1 {
+        font-size: 2em;
+    }
+}
